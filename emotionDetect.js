@@ -1,3 +1,5 @@
+// Diese Datei erzeugt ein Video, legt ein Canvas drüber und lädt aus der face-api.min.js die Daten die durch die Kameras, anlysiert diese 
+// und erfasst daraus welche Emotion man hat
 const video = document.getElementById('video');
 let canvas;
 
@@ -29,21 +31,16 @@ function startVideo() {
           const context = canvas.getContext('2d');
           context.clearRect(0, 0, canvas.width, canvas.height);
 
-          // Hier werden die einzelnen Punkte, Objekte im Video gezeichnet
+// Hier werden die einzelnen Punkte, Objekte im Video gezeichnet
           faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
           faceapi.draw.drawDetections(canvas, resizedDetections);
           faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 
-          // gibt die einzelnen Emotionen in der Konsole aus
-          detections.forEach(detection => {
-            const expressions = detection.expressions;
-            // expressions is an object containing probabilities for different emotions (e.g., 'neutral', 'happy', 'sad', etc.)
-            const mostLikelyEmotion = Object.keys(expressions).reduce((emotion, key) => expressions[key] > expressions[emotion] ? key : emotion);
-            console.log("Most likely emotion:", mostLikelyEmotion);
-          });
+
 
         }, 100);
       };
     })
     .catch(err => console.error(err));
 }
+
