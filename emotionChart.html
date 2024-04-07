@@ -8,7 +8,9 @@
 
   <!-- Fügen Sie die Chart.js-Bibliothek hinzu -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+  <script> import { emotionArray } from './videoAnalyzer.js'; // Assuming emotionUtils.js is in the same directory
+  </script> 
+
 </head>
 <body>
   <!-- Erstellen Sie ein Canvas-Element für den Graphen -->
@@ -16,11 +18,13 @@
 
 <script>
     
-//Diese komplette Datei zeigt ein Diagramm an das die Emotionen grafisch darstellt
-  
-    // Daten für das Diagramm
-    const emotions = ["neutral", "happy", "sad", "angry", "surprised"];
-    const probabilities = [0.2, 1, 0.1, 0.05, 0.25]; // Beispielwerte, ersetzen Sie diese durch Ihre Daten
+  //Diese komplette Datei zeigt ein Diagramm an das die Emotionen grafisch darstellt
+    console.log(emotionArray);
+      // Daten für das Diagramm
+      // const emotions = ["neutral", "happy", "sad", "angry", "surprised"];
+      // const probabilities = [0.2, 1, 0.1, 0.05, 0.25]; // Beispielwerte, ersetzen Sie diese durch Ihre Daten
+
+      
 
     // Erstellen Sie ein neues Diagramm
     const ctx = document.getElementById('emotionChart').getContext('2d');

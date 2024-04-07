@@ -3,6 +3,8 @@
 const video = document.getElementById('video');
 let canvas;
 
+
+
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
@@ -37,10 +39,21 @@ function startVideo() {
           faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 
 
+          //erstellt neues leeres Array
+          const emotionArray = [];
 
+          resizedDetections.forEach(result => {
+            const expressions = result.expressions;           
+            // Fügt die erkannten Emotionen für jedes Gesicht dem Array hinzu
+            emotionArray.push(expressions); 
+          });                         
         }, 100);
+        
       };
     })
     .catch(err => console.error(err));
 }
+
+
+export { emotionArray };
 
