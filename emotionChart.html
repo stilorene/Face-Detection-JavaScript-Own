@@ -8,7 +8,7 @@
 
   <!-- Fügen Sie die Chart.js-Bibliothek hinzu -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script> import { emotionArray } from './videoAnalyzer.js'; // Assuming emotionUtils.js is in the same directory
+  <script> import { emotionArray } from './emotionDetect.js'; // Assuming emotionUtils.js is in the same directory
   </script> 
 
 </head>
@@ -21,8 +21,12 @@
   //Diese komplette Datei zeigt ein Diagramm an das die Emotionen grafisch darstellt
     console.log(emotionArray);
       // Daten für das Diagramm
-      // const emotions = ["neutral", "happy", "sad", "angry", "surprised"];
-      // const probabilities = [0.2, 1, 0.1, 0.05, 0.25]; // Beispielwerte, ersetzen Sie diese durch Ihre Daten
+      const emotions = ["neutral", "happy", "sad", "angry", "surprised"];
+      const probabilities = [0.2, 1, 0.1, 0.05, 0.25]; // Beispielwerte, ersetzen Sie diese durch Ihre Daten
+
+      // const emotions = Object.keys(emotionArray);
+      // const probabilities = Object.values(emotionArray).map(probability => parseFloat(probability)); // Konvertieren der Wahrscheinlichkeiten in Zahlen
+
 
       
 
