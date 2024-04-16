@@ -4,18 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Emotion Detection</title>
   <script defer src="face-api.min.js"></script>
-  <script defer src="emotionUtils.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
   <script defer src="emotionDetect.js"></script>
+  <script defer src="emotionChart.js"></script>
   
-
-
   <style>
     body {
       margin: 0;
       padding: 0;
-    
       display: flex;
       justify-content: center;
       align-items: center;
@@ -35,30 +33,22 @@
       z-index: 1; /* Stellen Sie sicher, dass das Canvas über dem Video liegt */
     }
 
-    /* Stil für das eingebettete Diagramm */
-    #diagramm {
-      width: 400px;
-      height: 400px;
-    }
+    
   </style>
 </head>
-
-
 
 <body>
   <div id="facedetect">
     <video id="video" autoplay muted></video>
     <canvas id="canvas"></canvas>
   </div>
+  <div><canvas id="emotionChartCanvas" width="600" height="400"></canvas></div>
 
-  <!-- Das eingebettete Diagramm -->
-  <iframe id="diagramm" src="emotionChart.html"></iframe>
-
-  <script type="module">
-    // Annahme: detections ist irgendwo definiert und mit Daten gefüllt
-    const detectedEmotions = getDetectedEmotions(detections);
-  </script>
+ 
   
 
+  <script>
+    // Fügen Sie hier Ihren JavaScript-Code ein, um das Diagramm zu erstellen und zu aktualisieren
+  </script>
 </body>
 </html>
