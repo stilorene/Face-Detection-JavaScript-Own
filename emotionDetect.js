@@ -53,9 +53,14 @@ function startVideo() {
           resizedDetections.forEach(result => {
             const expressions = result.expressions; // Die erkannten Emotionen eines Gesichts werden gespeichert
         
-            // Die Emotionen und Wahrscheinlichkeiten werden aus dem Objekt extrahiert
-            const emotions = Object.keys(expressions);
-            const probabilities = Object.values(expressions);
+            // Die Emotionen und Wahrscheinlichkeiten werden aus deSm Objekt extrahiert
+            // Extrahiere die Emotionen und Wahrscheinlichkeiten aus dem Objekt 'expressions'.
+            
+            // 'Object.keys' gibt ein Array zurück, das die Schlüssel (Emotionen) des Objekts enthält.
+            // 'Object.values' gibt ein Array zurück, das die Werte (Wahrscheinlichkeiten) des Objekts enthält.
+            const emotions = Object.keys(expressions); // Array mit den Emotionen
+            const probabilities = Object.values(expressions); // Array mit den Wahrscheinlichkeiten
+
         
             // Die Funktion updateEmotionChart wird aufgerufen, um das Diagramm zu aktualisieren
             updateEmotionChart(emotions, probabilities);

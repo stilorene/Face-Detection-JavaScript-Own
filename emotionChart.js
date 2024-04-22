@@ -1,15 +1,14 @@
 let emotionChart = null; // Deklariere eine globale Variable, um das Diagramm zu speichern
 
+// Variable zum Speichern der kumulativen Wahrscheinlichkeiten
+let cumulativeProbabilities = null;
+
 // Funktion zum Aktualisieren des Emotionsdiagramms
 function updateEmotionChart(emotions, probabilities) {
-    // Überprüfe, ob ein vorhandenes Diagramm existiert und zerstöre es
-    if (emotionChart) {
-        emotionChart.destroy(); // Zerstöre das vorhandene Diagramm
-    }
-
-    const ctx = document.getElementById('emotionChartCanvas').getContext('2d'); // Hole den 2D-Kontext des Canvas-Elements
-    emotionChart = new Chart(ctx, { // Erstelle ein neues Diagramm
-        type: 'bar', // Diagrammtyp: Balkendiagramm
+    if (!emotionChart) {
+        const ctx = document.getElementById('emotionChartCanvas').getContext('2d');
+        emotionChart = new Chart(ctx, {
+            type: 'bar',
         data: {
             labels: emotions, // Emotionen als Beschriftungen auf der x-Achse
             datasets: [{
@@ -42,4 +41,15 @@ function updateEmotionChart(emotions, probabilities) {
             }
         }
     });
+    cumulativeProbabilities = probabilities.slice(); // Kopiere die Wahrscheinlichkeiten in die kumulative Variable
+} else {
+    // Addiere die neuen Wahrscheinlichkeiten zu den vorhandenen
+    for (let i = 0; i < probabilities.length; i++) {
+        cumulativeProbabilities[i] += probabilities[i];
+    }
+    
+    // Aktualisiere das Diagramm
+    emotionChart.data.datasets[0].data = cumulativeProbabilities;
+    emotionChart.update();
+}
 }
