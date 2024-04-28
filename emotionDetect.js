@@ -2,8 +2,10 @@
 // und erfasst daraus, welche Emotionen man hat
 const video = document.getElementById('video'); // Das Video-Element im HTML-Dokument wird ausgewählt und referenziert
 let canvas; // Die Variable zum Speichern des Canvas-Elements wird deklariert
-// Globale Variable, um die erkannten Emotionen zu speichern
 let detectedEmotions = []; // Ein leeres Array wird erstellt, um die erkannten Emotionen zu speichern
+let isDrawingEnabled = true;
+let resizedDetections;
+
 
 // Funktion zum Aktualisieren der erkannten Emotionen
 function updateDetectedEmotions(expressions) {
@@ -44,10 +46,12 @@ function startVideo() {
           const context = canvas.getContext('2d'); // Der 2D-Kontext des Canvas wird abgerufen
           context.clearRect(0, 0, canvas.width, canvas.height); // Der Canvas wird geleert
 
-          // Die erkannten Gesichter, Gesichtslandmarken und Emotionen werden im Canvas gezeichnet
-          faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-          faceapi.draw.drawDetections(canvas, resizedDetections);
-          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+          // Die erkannten Gesichter, Gesichtslandmarken und Emotionen werden im Canvas gezeichnet^
+
+          // Funktion zum Umschalten des Zeichnens
+
+            
+          
 
           // Für jedes erkannte Gesicht werden die Emotionen extrahiert und an die Funktion updateEmotionChart übergeben
           resizedDetections.forEach(result => {
@@ -72,4 +76,20 @@ function startVideo() {
       };
     })
     .catch(err => console.error(err)); // Wenn ein Fehler auftritt, wird er in der Konsole ausgegeben
+}
+
+function toggleDrawing() {
+  isDrawingEnabled = !isDrawingEnabled; // Umschalten des Zustands
+
+  // Überprüfen, ob das Zeichnen aktiviert oder deaktiviert werden soll
+  if (isDrawingEnabled) {
+      // Zeichnen aktivieren
+      faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+      faceapi.draw.drawDetections(canvas, resizedDetections);
+      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+  } else {
+      // Zeichnen deaktivieren, indem die Zeichenfläche gelöscht wird
+      const context = canvas.getContext('2d');
+      context.clearRect(0, 0, canvas.width, canvas.height);
+  }
 }
