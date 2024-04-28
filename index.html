@@ -9,8 +9,43 @@
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
   <script defer src="emotionDetect.js"></script>
   <script defer src="emotionChart.js"></script>
+  <link rel="stylesheet" href="loadingscreen.html">
+   
   
   <style>
+  .preload-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: orange; /* Orangefarbener Hintergrund */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Stelle sicher, dass der Preload-Bildschirm über anderen Inhalten liegt */
+        }
+    
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+    
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    
+        /* Verstecke den Preload-Bildschirm, wenn die Seite geladen ist */
+        .loaded .preload-screen {
+            display: none;
+        }
+      
+
     body {
       margin: 0;
       padding: 0;
@@ -38,17 +73,26 @@
 </head>
 
 <body>
+  
+
+  <div class="preload-screen">
+    <div class="loader"></div>
+  </div>
+
   <div id="facedetect">
     <video id="video" autoplay muted></video>
     <canvas id="canvas"></canvas>
   </div>
   <div><canvas id="emotionChartCanvas" width="600" height="400"></canvas></div>
 
- 
-  
 
   <script>
-    // Fügen Sie hier Ihren JavaScript-Code ein, um das Diagramm zu erstellen und zu aktualisieren
+    // Nach 5 Sekunden die Klasse 'loaded' zum body-Element hinzufügen
+    setTimeout(function() {
+      document.body.classList.add('loaded');
+    }, 5000); // 5000 Millisekunden = 5 Sekunden
   </script>
+
+
 </body>
 </html>

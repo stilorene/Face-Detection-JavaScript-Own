@@ -65,7 +65,7 @@ function startVideo() {
             // Die Funktion updateEmotionChart wird aufgerufen, um das Diagramm zu aktualisieren
             updateEmotionChart(emotions, probabilities);
         
-            console.log(expressions); // Die erkannten Emotionen werden in der Konsole ausgegeben
+            // console.log(expressions); // Die erkannten Emotionen werden in der Konsole ausgegeben
           });
         }, 100); // Die Gesichtserkennung wird alle 100 Millisekunden durchgeführt
         
