@@ -5,6 +5,7 @@ let canvas; // Die Variable zum Speichern des Canvas-Elements wird deklariert
 let detectedEmotions = []; // Ein leeres Array wird erstellt, um die erkannten Emotionen zu speichern
 let isDrawingEnabled = true;
 let resizedDetections;
+let expression;
 
 
 // Funktion zum Aktualisieren der erkannten Emotionen
@@ -65,7 +66,19 @@ function startVideo() {
             const emotions = Object.keys(expressions); // Array mit den Emotionen
             const probabilities = Object.values(expressions); // Array mit den Wahrscheinlichkeiten
 
-        
+            
+               // Zeichnen aktivieren
+                    function drawFaceExpressions() {
+                      // Überprüfen, ob resizedDetections vorhanden ist und ob es Gesichtserkennungsergebnisse gibt
+                      if (resizedDetections && resizedDetections.length > 0) {
+                          // Zeichne Gesichtsausdrücke, Erkennungen und Gesichtslandmarken
+                          faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+                          faceapi.draw.drawDetections(canvas, resizedDetections);
+                          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+                      } else {
+                          console.error('No face detection results available.'); // Fehlermeldung ausgeben, wenn keine Gesichtserkennungsergebnisse vorliegen
+                      }
+                  }
             // Die Funktion updateEmotionChart wird aufgerufen, um das Diagramm zu aktualisieren
             updateEmotionChart(emotions, probabilities);
         
@@ -76,20 +89,11 @@ function startVideo() {
       };
     })
     .catch(err => console.error(err)); // Wenn ein Fehler auftritt, wird er in der Konsole ausgegeben
-}
-
-function toggleDrawing() {
-  isDrawingEnabled = !isDrawingEnabled; // Umschalten des Zustands
-
-  // Überprüfen, ob das Zeichnen aktiviert oder deaktiviert werden soll
-  if (isDrawingEnabled) {
-      // Zeichnen aktivieren
-      faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-      faceapi.draw.drawDetections(canvas, resizedDetections);
-      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-  } else {
-      // Zeichnen deaktivieren, indem die Zeichenfläche gelöscht wird
-      const context = canvas.getContext('2d');
-      context.clearRect(0, 0, canvas.width, canvas.height);
   }
-}
+
+
+
+
+
+   
+
