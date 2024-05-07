@@ -13,6 +13,11 @@ function updateDetectedEmotions(expressions) {
   detectedEmotions = expressions; // Die erkannten Emotionen werden in der globalen Variablen gespeichert
 }
 
+
+
+
+
+
 // Die Modelle für die Gesichtserkennung und Emotionserkennung werden geladen, und nachdem sie geladen sind, wird die Funktion startVideo aufgerufen
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -47,53 +52,38 @@ function startVideo() {
           const context = canvas.getContext('2d'); // Der 2D-Kontext des Canvas wird abgerufen
           context.clearRect(0, 0, canvas.width, canvas.height); // Der Canvas wird geleert
 
-          // Die erkannten Gesichter, Gesichtslandmarken und Emotionen werden im Canvas gezeichnet^
-
-          // Funktion zum Umschalten des Zeichnens
-
-            
-          
-
+       
           // Für jedes erkannte Gesicht werden die Emotionen extrahiert und an die Funktion updateEmotionChart übergeben
           resizedDetections.forEach(result => {
             const expressions = result.expressions; // Die erkannten Emotionen eines Gesichts werden gespeichert
-        
+
             // Die Emotionen und Wahrscheinlichkeiten werden aus deSm Objekt extrahiert
             // Extrahiere die Emotionen und Wahrscheinlichkeiten aus dem Objekt 'expressions'.
-            
+
             // 'Object.keys' gibt ein Array zurück, das die Schlüssel (Emotionen) des Objekts enthält.
             // 'Object.values' gibt ein Array zurück, das die Werte (Wahrscheinlichkeiten) des Objekts enthält.
             const emotions = Object.keys(expressions); // Array mit den Emotionen
             const probabilities = Object.values(expressions); // Array mit den Wahrscheinlichkeiten
 
-            
-               // Zeichnen aktivieren
-                    function drawFaceExpressions() {
-                      // Überprüfen, ob resizedDetections vorhanden ist und ob es Gesichtserkennungsergebnisse gibt
-                      if (resizedDetections && resizedDetections.length > 0) {
-                          // Zeichne Gesichtsausdrücke, Erkennungen und Gesichtslandmarken
-                          faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-                          faceapi.draw.drawDetections(canvas, resizedDetections);
-                          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-                      } else {
-                          console.error('No face detection results available.'); // Fehlermeldung ausgeben, wenn keine Gesichtserkennungsergebnisse vorliegen
-                      }
-                  }
+
             // Die Funktion updateEmotionChart wird aufgerufen, um das Diagramm zu aktualisieren
             updateEmotionChart(emotions, probabilities);
-        
+
             // console.log(expressions); // Die erkannten Emotionen werden in der Konsole ausgegeben
           });
+
+          // Zeichnungen basierend auf den Zuständen der Schalter durchführen
+          drawBasedOnSwitches(canvas, resizedDetections);
         }, 100); // Die Gesichtserkennung wird alle 100 Millisekunden durchgeführt
-        
+
       };
     })
     .catch(err => console.error(err)); // Wenn ein Fehler auftritt, wird er in der Konsole ausgegeben
-  }
+}
 
 
 
 
 
-   
+
 
