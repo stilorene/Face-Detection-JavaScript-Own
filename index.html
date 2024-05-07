@@ -58,19 +58,13 @@
     body {
       margin: 0;
       padding: 0;
-      display: flex;
+
       justify-content: center;
       align-items: center;
       position: relative;
     }
 
-    #facedetect {
-      position: relative;
-      width: 720px;
-      /* Breite des Videos */
-      height: 560px;
-      /* Höhe des Videos */
-    }
+
 
     #canvas {
       position: absolute;
@@ -89,15 +83,32 @@
     <div class="loader"></div>
   </div>
 
-  <div id="facedetect">
-    <video id="video" autoplay muted></video>
-    <canvas id="canvas"></canvas>
+  <div id="Emotionanalys" style="display: flex; border: 1px solid #572b2bcc; margin: 0 auto;">
+    <div style="display: flex; flex-direction: column; border: 1px solid #ccc;">
+      <div id="facedetect" style="height: 560px; width: 50%; position: relative;">
+        <video id="video" autoplay muted style="border: 5px solid #ccc; border-radius: 10%; "></video>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div id="facebuttons" style="align-items: center; margin: 0 auto;">
+        <button id="faceExpressionButton"
+          style="margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; transition-duration: 0.4s; cursor: pointer;">
+          Gesichtsausdrücke
+        </button>
+        <button id="detectionsButton"
+          style="margin-bottom: 10px; background-color: #008CBA; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; transition-duration: 0.4s; cursor: pointer;">
+          Erkennungen
+        </button>
+        <button id="faceLandmarksButton"
+          style="background-color: #f44336; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; transition-duration: 0.4s; cursor: pointer;">
+          Gesichtslinien
+        </button>
+      </div>
+    </div>
+    <div style="width: 50%;">
+      <canvas id="emotionChartCanvas" width="100%" height="100%"></canvas>
+    </div>
   </div>
-  <div><canvas id="emotionChartCanvas" width="600" height="400"></canvas></div>
 
-  <button id="faceExpressionButton">Gesichtsausdrücke</button>
-  <button id="detectionsButton">Erkennungen</button>
-  <button id="faceLandmarksButton">Gesichtslandmarken</button>
 
 
 
