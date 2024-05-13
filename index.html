@@ -73,6 +73,30 @@
       z-index: 1;
       /* Stellen Sie sicher, dass das Canvas über dem Video liegt */
     }
+
+    .faceExpressionButton,
+    .detectionsButton,
+    .faceLandmarksButton {
+      margin-bottom: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+
+    .detectionsButton {
+      background-color: #008cba;
+    }
+
+    .faceLandmarksButton {
+      background-color: #f44336;
+    }
   </style>
 </head>
 
@@ -90,16 +114,13 @@
         <canvas id="canvas"></canvas>
       </div>
       <div id="facebuttons" style="align-items: center; margin: 0 auto;">
-        <button id="faceExpressionButton"
-          style="margin-bottom: 10px; background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; transition-duration: 0.4s; cursor: pointer;">
+        <button class="faceExpressionButton"; id="faceExpressionButton">
           Gesichtsausdrücke
         </button>
-        <button id="detectionsButton"
-          style="margin-bottom: 10px; background-color: #008CBA; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; transition-duration: 0.4s; cursor: pointer;">
+        <button class="detectionsButton" id="detectionsButton">
           Erkennungen
         </button>
-        <button id="faceLandmarksButton"
-          style="background-color: #f44336; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; transition-duration: 0.4s; cursor: pointer;">
+        <button class="faceLandmarksButton" id="faceLandmarksButton">
           Gesichtslinien
         </button>
       </div>
