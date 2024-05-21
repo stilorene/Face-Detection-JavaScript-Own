@@ -15,11 +15,13 @@ function updateEmotionChart(emotions, probabilities) {
                 label: 'Emotionswahrscheinlichkeiten', // Beschriftung der Datenreihe
                 data: probabilities, // Wahrscheinlichkeiten der Emotionen als Daten
                 backgroundColor: [ // Hintergrundfarben der Balken
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)'
+                    'rgba(159,29,53)',
+                    'rgba(0,204,255)',
+                    'rgba(0,117,94)',
+                    'rgba(255,239,213)',
+                    'rgba(255,196,12)',
+                    'rgba(0,168,107)',
+                    'rgba(201,160,220)',
                 ],
                 borderColor: [ // Randfarben der Balken
                     'rgba(255, 99, 132, 1)',
