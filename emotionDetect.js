@@ -6,6 +6,7 @@ let detectedEmotions = []; // Ein leeres Array wird erstellt, um die erkannten E
 let isDrawingEnabled = true;
 let resizedDetections;
 let expression;
+let facedetectDiv = document.getElementById('facedetect'); // Referenz auf das '#facedetect'-Div
 
 
 // Funktion zum Aktualisieren der erkannten Emotionen
@@ -40,7 +41,8 @@ function startVideo() {
       video.srcObject = stream; // Der Video-Stream wird dem Video-Element zugewiesen
       video.onloadedmetadata = () => {
         const displaySize = { width: video.videoWidth, height: video.videoHeight }; // Die Größe des Video-Displays wird erfasst
-        canvas = document.getElementById('canvas'); // Das Canvas-Element im HTML-Dokument wird ausgewählt und referenziert
+        canvas = document.getElementById('canvas');
+         // Das Canvas-Element im HTML-Dokument wird ausgewählt und referenziert
         faceapi.matchDimensions(canvas, displaySize); // Die Abmessungen des Canvas werden an die des Videos angepasst
 
         // In einem festgelegten Intervall wird die Gesichtserkennung durchgeführt und die Emotionen erfasst
@@ -52,7 +54,7 @@ function startVideo() {
           const context = canvas.getContext('2d'); // Der 2D-Kontext des Canvas wird abgerufen
           context.clearRect(0, 0, canvas.width, canvas.height); // Der Canvas wird geleert
 
-       
+
           // Für jedes erkannte Gesicht werden die Emotionen extrahiert und an die Funktion updateEmotionChart übergeben
           resizedDetections.forEach(result => {
             const expressions = result.expressions; // Die erkannten Emotionen eines Gesichts werden gespeichert
