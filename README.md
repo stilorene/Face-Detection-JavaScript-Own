@@ -1,9 +1,8 @@
-# IMPORTANT: Bug Fixes
+# FaceDetection-EmotionDetection in Javascript
 
-## `navigator.getUserMedia`
+Through this code you can simply scan multiply faces and easiely see what emotion each person has.
+All Emotions are collected and represented at a diagramms u can switch.
 
-`navigator.getUserMedia` is now deprecated and is replaced by `navigator.mediaDevices.getUserMedia`. To fix this bug replace all versions of `navigator.getUserMedia` with `navigator.mediaDevices.getUserMedia`
+I dont know what should be in this readme but i mabye figure it out later.
 
-## Low-end Devices Bug
-
-The video eventListener for `play` fires up too early on low-end machines, before the video is fully loaded, which causes errors to pop up from the Face API and terminates the script (tested on Debian [Firefox] and Windows [Chrome, Firefox]). Replaced by `playing` event, which fires up when the media has enough data to start playin
+This Extension is starting over LiveServer-Extension in Vs-Code
