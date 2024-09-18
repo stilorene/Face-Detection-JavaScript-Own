@@ -5,6 +5,7 @@ let chartType = 'bar'
 function updateEmotionChart(emotions, probabilities) {
     const ctx = document.getElementById('emotionChartCanvas').getContext('2d');
 
+
     if (!emotionChart) {
         // Wenn emotionChart noch nicht initialisiert wurde, erstelle ein neues Diagramm
         emotionChart = new Chart(ctx, {
@@ -53,8 +54,8 @@ function updateEmotionChart(emotions, probabilities) {
 
 
         emotionChart.config.type = chartType; // Hier wird der neue Diagrammtyp festgelegt. Dabei gehen keine Daten verloren, weil hierbei
-                                             //nur die Daten des Objekts EmotionChart geändert werden, nicht des Canvas (also nur ein Teil,
-                                             //hierbei type = chartType oben festgelegt als Bar, mit dem Button geändert zu polarArea) 
+        //nur die Daten des Objekts EmotionChart geändert werden, nicht des Canvas (also nur ein Teil,
+        //hierbei type = chartType oben festgelegt als Bar, mit dem Button geändert zu polarArea) 
 
         // Aktualisiere das Diagramm
         emotionChart.update();
@@ -67,6 +68,14 @@ function updateEmotionChart(emotions, probabilities) {
 const button = document.getElementById('changeChartTypeButton');
 
 button.addEventListener('click', function () {
-    chartType = 'polarArea'; // Setze chartType auf 'polarArea' beim Klicken des Buttons
-    alert('Button wurde geklickt! chartType ist jetzt: ' + chartType);
+    if (chartType === 'bar') {
+        chartType = 'polarArea'; // Setze chartType auf 'polarArea' beim Klicken des Buttons
+    }
+    else{
+        chartType = 'bar';
+    }
+
 });
+
+
+
